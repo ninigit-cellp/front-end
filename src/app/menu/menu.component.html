@@ -1,0 +1,13 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div><a class="navbar-brand"><b>Voitures API</b></a></div>
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li>
+                <a *ngIf="!isLoggedIn" class="nav-link" href="/login">Accéder aux commentaires</a>
+            </li>
+            <li>
+                <a *ngIf="isLoggedIn" class="nav-link" href="/logout" (click)=handleLogout()>Se déconnecter</a>
+            </li>
+        </ul>
+    </nav>
+</header>

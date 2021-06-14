@@ -1,0 +1,33 @@
+<app-menu></app-menu>
+<div *ngIf="!isLoggedIn" class="panel-body">
+    <h2>Veuillez vous connecter</h2>
+</div>
+<div *ngIf="isLoggedIn" class="panel panel-primary">
+    <div class="panel-heading">
+        <br>
+        <h3> Liste des voitures</h3>
+        <br>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+
+                    <th>Marque</th>
+                    <th>Modèle</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let voiture of voitures | async">
+
+                    <td>{{voiture.marque}}</td>
+                    <td>{{voiture.modele}}</td>
+                    <td><button (click)="commentairesVoiture(voiture.idVoiture)" class="btn btn-outline-primary">Voir
+                            les
+                            commentaires</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

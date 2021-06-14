@@ -1,0 +1,60 @@
+<app-menu></app-menu>
+<div *ngIf="!isLoggedIn" class="panel-body">
+    <h2>Veuillez vous connecter</h2>
+</div>
+<div *ngIf="isLoggedIn" class="panel panel-primary">
+    <div class="panel-heading">
+        <br>
+        <h3> Commentaires pour la voiture {{voiture.marque}} {{voiture.modele}}
+        </h3>
+        <button class="btn btn-outline-primary btn-sm shadow-none" (click)="listVoitures()">Liste des
+            voitures</button>
+        <br>
+
+
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+
+                    <th></th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let commentaire of commentaires | async">
+                    <td><b>{{commentaire.proprietaire}}</b></td>
+                    <td>{{commentaire.contenu}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="container">
+            <h4>Ajouter un commentaire</h4>
+        </div>
+
+    </div>
+    <div class="bg-light p-2">
+        <div class="d-flex flex-row align-items-start">
+            <form (ngSubmit)="onSubmit()">
+
+
+                <div class="form-control  shadow-none ">
+                    <textarea id="contenu" required [(ngModel)]="commentaire.contenu" class="form-control shadow-none"
+                        style="width: 450px;" name="contenu"></textarea>
+                </div>
+                <!-- <div class="form-control  shadow-none ">
+                    <textarea id="contenu" required [(ngModel)]="commentaire.proprietaire" name=""
+                        class="form-control shadow-none" style="width: 450px;" name="proprietaire"></textarea>
+                </div> -->
+
+
+                <button type="submit" class="btn btn-primary btn-sm shadow-none">Commenter</button>
+
+            </form>
+        </div>
+
+    </div>
+</div>
